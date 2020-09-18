@@ -1,5 +1,6 @@
 <?php
 // показывать или нет выполненные задачи
+include_once('helpers.php');
 $show_complete_tasks = rand(0, 1);
 
 $categories = ['Входящие', 'Учеба', 'Работа', 'Домашние дела', 'Авто'];
@@ -86,7 +87,7 @@ $tasks = [
                         <?php foreach ($categories as $category): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?= $category?></a>
-                            <span class="main-navigation__list-item-count">0</span>
+                            <span class="main-navigation__list-item-count"><?= task_amount($tasks,$category);?></span>
                         </li>
                         <?php endforeach; ?>
                     </ul>

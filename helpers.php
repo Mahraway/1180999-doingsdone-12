@@ -142,3 +142,22 @@ function include_template($name, array $data = []) {
 
     return $result;
 }
+
+/**
+ * Функция, которая умеет подсчитывать количество задач в каждом из проектов
+ * @param string $project_name название проекта
+ * @param array $tasks ассоциативный массив с данными для шаблона
+ * @return integer Итоговое количество задач в проекте 
+ */
+
+ function task_amount(array $tasks = [], string $project_name)
+ {
+    $item_count = 0;
+    foreach ($tasks as $item => $key) {
+        if ($project_name === $key['category']) {
+            $item_count++;
+        }
+    }
+    return $item_count;
+ }
+
