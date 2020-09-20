@@ -45,14 +45,14 @@
                     </label>
                 </div>
 
-                <?php foreach ($tasks as $item => $val):
-                    if ($val['completed'] === true) $completed_class = 'task--completed'; // стиль выполненных задач
+                <?php foreach ($tasks as $task):
+                    if ($task['completed'] === true) $completed_class = 'task--completed'; // стиль выполненных задач
                     else $completed_class = '';
 
-                    if (task_time($val['date']) <= 24) $task_class = 'task--important'; // стиль задач, срок которых либо закончился,
+                    if (task_time($task['date']) <= 24) $task_class = 'task--important'; // стиль задач, срок которых либо закончился,
                     else $task_class = '';                                              // либо осталось менее 24 часов    
 
-                    if ($show_complete_tasks === 0 && $val['completed'] === true) continue;
+                    if ($show_complete_tasks === 0 && $task['completed'] === true) continue;
                 ?>
 
                 <table class="tasks">
@@ -60,7 +60,7 @@
                         <td class="task__select <?=$completed_class?>">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=htmlspecialchars($val['name'])?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars($task['name'])?></span>
                             </label>
                         </td>
 
@@ -68,7 +68,7 @@
                             <a class="download-link" href="#" >Home.psd</a>
                         </td>
 
-                        <td class="task__date"><?=htmlspecialchars($val['date'])?></td>
+                        <td class="task__date"><?=htmlspecialchars($task['date'])?></td>
                         
                     </tr>
                     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
