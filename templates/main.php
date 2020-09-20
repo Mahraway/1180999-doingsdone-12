@@ -46,12 +46,17 @@
                 </div>
 
                 <?php foreach ($tasks as $item => $val):
-                    if ($val['completed'] === true) $completed_class = 'task--completed'; else $completed_class = '';
+                    if ($val['completed'] === true) $completed_class = 'task--completed'; // стиль выполненных задач
+                    else $completed_class = '';
+
+                    if (task_time($val['date']) <= 24) $task_class = 'task--important'; // стиль задач, срок которых либо закончился,
+                    else $task_class = '';                                              // либо осталось менее 24 часов    
+
                     if ($show_complete_tasks === 0 && $val['completed'] === true) continue;
                 ?>
 
                 <table class="tasks">
-                    <tr class="tasks__item task">
+                    <tr class="tasks__item task <?=$task_class?>">
                         <td class="task__select <?=$completed_class?>">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
@@ -60,7 +65,7 @@
                         </td>
 
                         <td class="task__file">
-                            <a class="download-link" href="#">Home.psd</a>
+                            <a class="download-link" href="#" >Home.psd</a>
                         </td>
 
                         <td class="task__date"><?=htmlspecialchars($val['date'])?></td>

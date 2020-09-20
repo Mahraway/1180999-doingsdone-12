@@ -150,7 +150,7 @@ function include_template($name, array $data = []) {
  * @return integer Итоговое количество задач в проекте 
  */
 
- function task_amount(array $tasks = [], string $project_name)
+ function task_amount(array $tasks = [], string $project_name): int
  {
     $item_count = 0;
     foreach ($tasks as $item => $key) {
@@ -160,4 +160,18 @@ function include_template($name, array $data = []) {
     }
     return $item_count;
  }
+
+ /**
+  * Функция, для подсчета количества оставшихся часов для выполнения задач
+  * @param string $date дата оконачния задачи
+  * @return boolean $time_left количество оставшихся часов
+  */
+
+  function task_time(string $date): int
+  {
+    $date = strtotime($date); // преобразуем дату задачи в unix
+    $time_left = floor(($date - time())/3600); // разницу времени преобразовываем в часы 
+    
+    return $time_left;
+  }
 

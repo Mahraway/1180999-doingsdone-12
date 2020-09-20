@@ -1,5 +1,5 @@
 <?php
-// показывать или нет выполненные задачи
+date_default_timezone_set("Europe/Moscow");
 include_once('helpers.php');
 $show_complete_tasks = rand(0, 1);
 
@@ -7,19 +7,19 @@ $categories = ['Входящие', 'Учеба', 'Работа', 'Домашни
 $tasks = [
     [
         'name' => 'Собеседование в IT компании',
-        'date' => '2020-12-01',
+        'date' => '2020-09-20',
         'category' => $categories[2],
         'completed' => false
     ],
     [
         'name' => 'Выполнить тестовое задание',
-        'date' => '2020-12-25',
+        'date' => '2020-09-21',
         'category' => $categories[2],
         'completed' => false
     ],
     [
         'name' => 'Сделать задание первого раздела(сделано)',
-        'date' => '2020-12-21',
+        'date' => '2019-12-21',
         'category' => $categories[1],
         'completed' => true
     ],
@@ -31,13 +31,13 @@ $tasks = [
     ],
     [
         'name' => 'Купить корм для кота',
-        'date' => null,
+        'date' =>  '',
         'category' => $categories[3],
         'completed' => false
     ],
     [
         'name' => 'Заказать пиццу',
-        'date' => null,
+        'date' => '',
         'category' => $categories[3],
         'completed' => false
     ]
