@@ -50,8 +50,8 @@ $main_page = include_template('main.php',[
     ]);
 $layout = include_template('layout.php', [
     'main_page' => $main_page,
-    'Дела в порядке' => $title,
-    'Рашид' => $user_name
+    'title' => 'Дела в порядке',
+    'user_name' => 'Рашид' 
 ]);
 
 print($layout);

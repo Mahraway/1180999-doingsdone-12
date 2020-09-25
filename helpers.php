@@ -151,15 +151,25 @@ function include_template($name, array $data = []) {
  */
 
  function task_amount(array $tasks = [], string $project_name): int
- {
-    $item_count = 0;
-    foreach ($tasks as $item => $key) {
-        if ($project_name === $key['category']) {
-            $item_count++;
-        }
-    }
+{
+    $item_count = array_reduce($tasks, function($acc, $item)
+    {
+        if ($project_name === $item['category']) {
+            $acc++; 
+            return $acc;
+        } else return 0;
+    });
     return $item_count;
- }
+}
+ //  {
+//     $item_count = 0;
+//     foreach ($tasks as $item) {
+//         if ($project_name === $item['category']) {
+//             $item_count++;
+//         }
+//     }
+//     return $item_count;
+//  }
 
  /**
   * Функция, для подсчета количества оставшихся часов для выполнения задач
