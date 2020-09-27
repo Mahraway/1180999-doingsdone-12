@@ -154,14 +154,13 @@ function include_template($name, array $data = []) {
 {
     $item_count = array_reduce($tasks, function($acc, $item) use ($category)
     {
-        if ($category === $item['category']) 
-            $acc++; 
-            return $acc;        
-    }); // Если нет совпадений вернет null
+        if ($category === $item['category']) {
+            $acc++;
+        }
+            return $acc;       
+    }, 0); // Значение по умолчанию
 
-    if ($item_count !== null) {
-        return $item_count;
-    } else return 0;  
+    return $item_count;
 }
 
 //  Альтернативный метод подсчета
