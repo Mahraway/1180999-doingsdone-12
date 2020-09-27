@@ -145,23 +145,28 @@ function include_template($name, array $data = []) {
 
 /**
  * Функция, которая умеет подсчитывать количество задач в каждом из проектов
- * @param string $project_name название проекта
- * @param array $tasks ассоциативный массив с данными для шаблона
- * @return integer Итоговое количество задач в проекте 
+ * @param string $category название проекта
+ * @param array $tasks список задач
+ * @return int Итоговое количество задач в проекте 
  */
 
- function task_amount(array $tasks = [], string $project_name): int
+ function task_amount(string $category, array $tasks = []): int
 {
-    $item_count = array_reduce($tasks, function($acc, $item)
+    $item_count = array_reduce($tasks, function($acc, $item) use ($category)
     {
-        if ($project_name === $item['category']) {
+        if ($category === $item['category']) 
             $acc++; 
-            return $acc;
-        } else return 0;
-    });
-    return $item_count;
+            return $acc;        
+    }); // Если нет совпадений вернет null
+
+    if ($item_count !== null) {
+        return $item_count;
+    } else return 0;  
 }
- //  {
+
+//  Альтернативный метод подсчета
+//
+//  { 
 //     $item_count = 0;
 //     foreach ($tasks as $item) {
 //         if ($project_name === $item['category']) {
